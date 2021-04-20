@@ -1,23 +1,23 @@
-import React, {useState} from 'react';
-import { SafeAreaView, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import  {Button} from '../components/Button'
-
+import React from 'react';
+import { SafeAreaView, Text, Image, TouchableOpacity, StyleSheet, Dimensions, View } from 'react-native';
+import { Feather } from '@expo/vector-icons'
 import watering from '../assets/watering.png'
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export function Welcome(){
-    const [visible, setVisible] = useState(false)
 
-    function handleVisibility(){
-        setVisible(true)
-    }
 
     return(
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Welcome to Another Project {'\n'} by MecBonjourno</Text>
-            {visible && <Image source={watering} style={styles.image} />}
-            <Text style={styles.subTitle}>É mais um app que eu faço, pra praticar, pra estudar, pra melhorar. É isto dnv. </Text>
-            <Button title="Imagem" onPress={handleVisibility}/>
+            <View style={styles.wrapper}>
+             <Text style={styles.title}>Welcome to Another Project {'\n'} by MecBonjourno</Text> 
+              <Image source={watering} style={styles.image} resizeMode="contain"/>
+                <Text style={styles.subTitle}>É mais um app que eu faço, pra praticar, pra estudar, pra melhorar. É isto dnv. </Text>
+                    <TouchableOpacity style={styles.button} activeOpacity={0.7} >
+                        <Feather name="chevron-right" style={styles.buttonIcon}/> 
+                    </TouchableOpacity>
+            </View>
         </SafeAreaView>
      )
 }
@@ -25,21 +25,28 @@ export function Welcome(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    wrapper: {
+        flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around',
+        paddingHorizontal: 20,
     },
     title: {
-        fontSize: 32,
+        fontSize: 38,
         fontWeight: 'bold',
         textAlign: 'center',
         color: colors.heading,
         marginTop: 38,
+        fontFamily: fonts.heading,
+        lineHeight: 40,
     },
     subTitle:{
         textAlign: 'center',
         fontSize: 18,
         paddingHorizontal: 20,
-        color: colors.heading
+        color: colors.heading,
+        fontFamily: fonts.text,
     },
     button: {
         backgroundColor: colors.green,
@@ -50,12 +57,11 @@ const styles = StyleSheet.create({
         height: 56,
         width: 56,
     },
-    image: {
-        width: 292,
-        height: 284,
-    },
-    buttonText: {
+    buttonIcon: {
+        fontSize: 32,
         color: colors.white,
-        fontSize: 24,
-    }
+    },
+    image: {
+        height: Dimensions.get('window').width * (0.7),
+    },
 })
