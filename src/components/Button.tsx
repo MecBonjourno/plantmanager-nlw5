@@ -3,12 +3,11 @@ import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
+
 export function Button(){
     return (
         <TouchableOpacity style={styles.container}> 
-            <Text style={styles.text}> 
-                Confirmar
-            <Text>
+          <Text style={styles.text}>Confirmar</Text>
         </TouchableOpacity>
     )
 }
