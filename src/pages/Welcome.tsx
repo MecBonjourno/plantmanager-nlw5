@@ -4,9 +4,15 @@ import { Feather } from '@expo/vector-icons'
 import watering from '../assets/watering.png'
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { useNavigation } from '@react-navigation/native';
 
 export function Welcome(){
 
+    const navigation = useNavigation()
+
+    function handleStart(){ 
+        navigation.navigate('UserIdentification')
+    }
 
     return(
         <SafeAreaView style={styles.container}>
@@ -14,7 +20,7 @@ export function Welcome(){
              <Text style={styles.title}>Welcome to Another Project {'\n'} by MecBonjourno</Text> 
               <Image source={watering} style={styles.image} resizeMode="contain"/>
                 <Text style={styles.subTitle}>É mais um app que eu faço, pra praticar, pra estudar, pra melhorar. É isto dnv. </Text>
-                    <TouchableOpacity style={styles.button} activeOpacity={0.7} >
+                    <TouchableOpacity style={styles.button} activeOpacity={0.7} onPress={handleStart}>
                         <Feather name="chevron-right" style={styles.buttonIcon}/> 
                     </TouchableOpacity>
             </View>

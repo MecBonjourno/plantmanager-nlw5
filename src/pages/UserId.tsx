@@ -4,6 +4,7 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 import { Button } from '../components/Button'
+import { useNavigation } from '@react-navigation/native';
 
 export function UserId(){
     const [ isFocused, setIsFocused ] = useState(false)
@@ -18,6 +19,12 @@ export function UserId(){
         setName(value) 
     }
 
+    const navigation = useNavigation()
+
+    function handleSubmit(){ 
+        navigation.navigate('Confirmation')
+    }
+    
     return(
         <SafeAreaView style={styles.container}>
             <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? "padding" : "height"}>
@@ -40,7 +47,10 @@ export function UserId(){
                             onChangeText={handleInputChange}
                            />
                         <View style={styles.footer}>
-                         <Button />
+                         <Button 
+                            title="Confirmar"
+                           onPress={handleSubmit}
+                         />
                         </View>
                     </View>
                 </View>
